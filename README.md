@@ -175,6 +175,8 @@ The devices below are fully feature supported by OpenRazer, which means all avai
 | Razer DeathAdder V2 X HyperSpeed              |  1532:009C  |
 | Razer Viper V2 Pro (Wired)                    |  1532:00A5  |
 | Razer Viper V2 Pro (Wireless)                 |  1532:00A6  |
+| Razer Naga V2 Pro (Wired)                     |  1532:00A7  |
+| Razer Naga V2 Pro (Wireless)                  |  1532:00A8  |
 | Razer Basilisk V3 Pro (Wired)                 |  1532:00AA  |
 | Razer Basilisk V3 Pro (Wireless)              |  1532:00AB  |
 | Razer HyperPolling Wireless Dongle            |  1532:00B3  |
