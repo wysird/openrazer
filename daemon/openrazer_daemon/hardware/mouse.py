@@ -1727,29 +1727,28 @@ class RazerNagaV2ProWired(_RazerDevice):
 
     USB_VID = 0x1532
     USB_PID = 0x00A7
-    METHODS = ['get_device_type_mouse', 'max_dpi', 'get_dpi_xy', 'set_dpi_xy', 'get_dpi_stages', 'set_dpi_stages',
-               'get_poll_rate', 'set_poll_rate',
-               'get_battery', 'is_charging', 'get_idle_time', 'set_idle_time', 'set_low_battery_threshold']
+    HAS_MATRIX = True
+    WAVE_DIRS = (1, 2)
+    MATRIX_DIMS = [1, 2]
 
+    DEDICATED_MACRO_KEYS = True
+    METHODS = ['get_device_type_mouse', 'max_dpi', 'get_dpi_xy', 'set_dpi_xy',
+               'get_dpi_stages', 'set_dpi_stages',
+               'get_poll_rate', 'set_poll_rate',
+               # Macros
+               'get_macros', 'delete_macro', 'add_macro',
+               # Scroll wheel
+               'get_scroll_brightness', 'set_scroll_brightness',
+               'set_scroll_wave', 'set_scroll_static_naga_hex_v2', 'set_scroll_spectrum_naga_hex_v2', 'set_scroll_none_naga_hex_v2', 'set_scroll_reactive_naga_hex_v2', 'set_scroll_breath_random_naga_hex_v2', 'set_scroll_breath_single_naga_hex_v2', 'set_scroll_breath_dual_naga_hex_v2',
+               # Left side = thumbgrid
+               'get_left_brightness', 'set_left_brightness',
+               'set_left_wave', 'set_left_static', 'set_left_spectrum', 'set_left_none', 'set_left_reactive', 'set_left_breath_random', 'set_left_breath_single', 'set_left_breath_dual',
+               # Custom frame
+               'set_custom_effect', 'set_key_row']
+    
     DEVICE_IMAGE = "https://assets2.razerzone.com/images/pnx.assets/ac3c7e522c3b9dcf052b113ba60c5cde/razer-naga-x-500x500.png"
 
     DPI_MAX = 30000
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self._battery_manager = _BatteryManager(self, self._device_number, 'Razer Naga V2 Pro')
-        self._battery_manager.active = self.config.getboolean('Startup', 'battery_notifier', fallback=False)
-        self._battery_manager.frequency = self.config.getint('Startup', 'battery_notifier_freq', fallback=10 * 60)
-        self._battery_manager.percent = self.config.getint('Startup', 'battery_notifier_percent', fallback=33)
-
-    def _close(self):
-        """
-        Close the key manager
-        """
-        super()._close()
-
-        self._battery_manager.close()
 
 class RazerNagaV2ProWired(RazerNagaV2ProWireless):
     """
